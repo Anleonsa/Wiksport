@@ -4,16 +4,17 @@ INSERT INTO Usuario (Username, contrasenia, Imagen, Nombre, Apellido, Peso, Altu
 VALUES 
   ('Anfelesan', 'monkey', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCLZr3_SOoBxE5kIj-AzuPU0rhXYbOLcxLjA&s', 'Andres', 'Sanchez', 50, 1.60, 19),
   ('Juanjo', 'qwerty', 'https://i.pinimg.com/736x/be/7a/e0/be7ae06405b93b8284cfaeec037253e5.jpg', 'Juan', 'Mora', 70, 1.70, 18),
-  ('admin', 'whatever', 'https://cdn-icons-png.flaticon.com/512/9703/9703596.png', 'NoName', 'NoLastName', 60, 1.60, 19 );
+  ('admin', 'whatever', 'https://cdn-icons-png.flaticon.com/512/9703/9703596.png', 'NoName', 'NoLastName', 60, 1.60, 19),
+  ('Anleonsa', 'con', 'https://icpc.global/regionals/abouticpc/foundationlogo.png', 'Name', 'Last name', 60.3, 1.83, 19);
 
 INSERT INTO Ejercicio (Nombre_ejercicio, Dificultad, Categoria, Descripcion, Musculo, Imagen)
 VALUES
 -- -- Fuerza:Pierna ----
   ('Sentadilla', 7, 'Fuerza', 'Ejercicio de pierna que involucra bajar y subir flexionando las rodillas.', 'Cuádriceps, Glúteos', 'https://hips.hearstapps.com/hmg-prod/images/cristiano-ronaldo-entrenamiento-pesa-rusa-1578561219.jpg'),
-  ('Zancadas', 6, 'Fuerza', 'Paso adelante flexionando ambas rodillas, cargando el peso sobre la pierna.', 'Cuádriceps, Glúteos', 'https://hips.hearstapps.com/hmg-prod/images/cristiano-ronaldo-entrenamiento-pesa-rusa-1578561219.jpg'),
-  ('Hip thrust', 7, 'Fuerza', 'Levantamiento de la cadera con una barra apoyada sobre las piernas, trabajando principalmente glúteos.', 'Glúteos, Isquiotibiales', 'https://hips.hearstapps.com/hmg-prod/images/cristiano-ronaldo-entrenamiento-pesa-rusa-1578561219.jpg'),
-  ('Prensa', 6, 'Fuerza', 'Ejercicio en máquina donde se empuja un peso con las piernas desde una posición sentada.', 'Cuádriceps, Glúteos', 'https://hips.hearstapps.com/hmg-prod/images/cristiano-ronaldo-entrenamiento-pesa-rusa-1578561219.jpg'),
-  ('Peso muerto sumo', 7, 'Fuerza', 'Variante del peso muerto con las piernas abiertas en postura sumo, enfatizando glúteos.', 'Glúteos, Espalda baja', 'https://hips.hearstapps.com/hmg-prod/images/cristiano-ronaldo-entrenamiento-pesa-rusa-1578561219.jpg'),
+  ('Zancadas', 6, 'Fuerza', 'Paso adelante flexionando ambas rodillas, cargando el peso sobre la pierna.', 'Cuádriceps, Glúteos', 'https://www.sportlife.es/uploads/s1/76/09/48/8/zancada-perfecta-perfil-correcto.jpeg'),
+  ('Hip thrust', 7, 'Fuerza', 'Levantamiento de la cadera con una barra apoyada sobre las piernas, trabajando principalmente glúteos.', 'Glúteos, Isquiotibiales', 'https://cdn.shopify.com/s/files/1/1490/1130/files/glute_bridge_480x480.jpg?v=1694622200'),
+  ('Prensa', 6, 'Fuerza', 'Ejercicio en máquina donde se empuja un peso con las piernas desde una posición sentada.', 'Cuádriceps, Glúteos', 'https://sdmed.cl/wp-content/uploads/2021/11/2-27-600x600.jpg'),
+  ('Peso muerto sumo', 7, 'Fuerza', 'Variante del peso muerto con las piernas abiertas en postura sumo, enfatizando glúteos.', 'Glúteos, Espalda baja', 'https://static.strengthlevel.com/images/exercises/sumo-deadlift/sumo-deadlift-800.jpg'),
   ('Peso muerto', 9, 'Fuerza', 'Levantar una barra desde el suelo con la espalda recta, usando principalmente las piernas.', 'Espalda baja, Glúteos', 'https://hips.hearstapps.com/hmg-prod/images/cristiano-ronaldo-entrenamiento-pesa-rusa-1578561219.jpg'),
 
 -- -- Fuerza:Push ----

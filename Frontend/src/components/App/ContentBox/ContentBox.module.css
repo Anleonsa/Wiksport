@@ -9,4 +9,5 @@
 
 .app_content_box main {
   flex-grow: 20;
+  overflow-y: scroll;
 }

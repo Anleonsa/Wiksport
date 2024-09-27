@@ -1,6 +1,7 @@
 .app_sidebar {
   background-color: var(--dark-gray-sidebar);
   min-width: 240px;
+  max-width: 240px;
 }
 
 .app_sidebar_ul {
@@ -9,10 +10,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.app_sidebar_li {
-
 }
 
 .app_sidebar_link {

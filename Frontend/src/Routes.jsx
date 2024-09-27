@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Panel from './pages/Panel'
 import Calendar from './pages/Calendar/Calendar'
-import Exercises from './pages/Exercises'
+import PublicExercises from './pages/PublicExercises/PublicExercises'
 import Routines from './pages/Routines'
 import CreateRoutine from './pages/CreateRoutine'
 import Profile from './pages/Profile/Profile'
@@ -12,6 +12,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import { useWho } from './hooks/useWho'
 import { createContext } from 'react'
+import PublicRoutineInfo from './pages/PublicRoutineInfo/PublicRoutineInfo'
 
 export const WhoContext = createContext()
 
@@ -26,8 +27,9 @@ const AppRoutes = () => {
           <Route path='/iniciar-sesion' exact element={<Login />} />
           <Route path='/registrarse' exact element={<Register />} />
           <Route path='/calendario' exact element={<Calendar />} />
-          <Route path='/ejercicios' exact element={<Exercises />} />
+          <Route path='/ejercicios' exact element={<PublicExercises />} />
           <Route path='/rutinas' exact element={<Routines />} />
+          <Route path='/rutina/:id' exact element={<PublicRoutineInfo />}></Route>
           <Route path='crear-rutina' exact elemnt={<CreateRoutine />} />
           <Route path='/perfil' exact element={<Profile />} />
           <Route path='/avl' element={<COMP_AVL />}></Route>
