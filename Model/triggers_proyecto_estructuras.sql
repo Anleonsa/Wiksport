@@ -50,6 +50,18 @@ delimiter $$
 create trigger delete_rutina before delete on rutina for each row
 begin
 Delete from rutina_ejercicio where Id_rutina=old.Id_rutina;
+delete from rutina_programada where Id_rutina=old.Id_rutina;
 end$$
 delimiter ;
+
+drop trigger if exists insert_rutina_programada_fecha;
+delimiter $$
+create trigger insert_rutina_programada_fecha before insert on rutina_programada for each row
+begin
+if curdate() > new.Fecha then
+signal sqlstate '45000' set message_text = 'Fecha invalida';
+end if;
+end$$
+delimiter ;
+
 

@@ -106,6 +106,15 @@ delimiter ;
 -- select * from rutina;
 -- call search_rutina(null);
 
+drop procedure if exists search_one_rutina;
+delimiter $$
+-- busca info de una sola rutina
+create procedure search_one_rutina(IN S_id_rutina int)
+begin
+select Id_rutina, Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, ejercicios_rutina(S_id_rutina) from rutina where Id_rutina=S_id_rutina;
+end $$
+delimiter ;
+
 drop procedure if exists create_rutina;
 delimiter $$
 create procedure create_rutina (IN N_nombre_rutina varchar(60), 
@@ -124,6 +133,7 @@ delimiter ;
 
 drop procedure if exists asociar_rutina_ejercicio;
 delimiter $$
+-- asocia un ejercicio a una rutina, la numeracion de posicion de los ejercicios comienza en 1 y se le tiene que pasar en orden de posicion
 create procedure asociar_rutina_ejercicio (in N_id_rutina int,in N_id_ejercicio int,in N_posicion smallint unsigned,in N_cantidad_series smallint unsigned,
 in N_tipo_ejecucion enum('T','R'),in N_cantidad_ejercicios smallint unsigned)
 Begin
@@ -147,6 +157,7 @@ delimiter ;
 
 drop procedure if exists clonar_rutina;
 delimiter $$
+-- clona una rutina especificada para que se asocie con un usuario especeficado
 create procedure clonar_rutina (in S_id_rutina int, in S_username varchar(30))
 begin
 declare S_id_usuario int;
@@ -178,6 +189,31 @@ end $$
 delimiter ;
 
 -- call info_user("j");
+
+drop procedure if exists programar_rutina;
+delimiter $$
+-- se agenda una rutina para una fecha especifica
+create procedure programar_rutina (in N_id_rutina int, in N_fecha date)
+begin
+insert into rutina_programada(Id_rutina, Fecha) values (N_id_rutina, N_fecha);
+end $$
+delimiter ;
+
+
+
+drop procedure if exists rutinas_mes;
+delimiter $$
+-- devuelve todas las rutinas del mes programadas por un usuario en especificp
+create procedure rutinas_mes (in S_username varchar(30))
+begin 
+declare actual int;
+declare S_id_usuario int;
+set actual= month(curdate());
+set S_id_usuario = (select Id_usuario from usuario where Username = S_username);
+select Id_rutina, Nombre_rutina, Fecha from (select Id_rutina, Nombre_rutina from rutina where Id_usuario=S_id_usuario) as r Natural join rutina_programada where month(Fecha)=actual order by Fecha;
+end $$
+delimiter ;
+
 
 
 

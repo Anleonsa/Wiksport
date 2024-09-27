@@ -2,6 +2,7 @@ CREATE SCHEMA IF NOT EXISTS Proyecto_Estructuras;
 USE Proyecto_Estructuras;
 
 Drop table if exists Rutina_ejercicio;
+Drop table if exists Rutina_programada;
 Drop table if exists Rutina;
 Drop table if exists Ejercicio;
 DROP TABLE IF EXISTS Usuario;
@@ -54,6 +55,14 @@ Cantidad_ejercicios smallint unsigned not null, #puede necesitar un trigger
 Primary key(Id_rutina,Id_ejercicio,Posicion),
 constraint Rutina_ejecicio_id_rutina foreign key (Id_rutina) references Rutina(Id_rutina),
 constraint Rutina_ejecicio_id_ejercicio foreign key (Id_ejercicio) references Ejercicio(Id_ejercicio)
+);
+
+create table Rutina_programada (
+Id_programacion int auto_increment, 
+Id_rutina int, 
+Fecha date, 
+primary key(Id_programacion),
+constraint Rutina_programada_id_rutina foreign key (Id_rutina) references Rutina(Id_rutina)
 );
 
 
