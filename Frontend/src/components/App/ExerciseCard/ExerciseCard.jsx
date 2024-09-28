@@ -9,6 +9,8 @@ const ExerciseCard = ({ img_url, name, difficulty, category, muscle, description
       text: description,
       imageUrl: img_url,
       imageHeight: 300,
+      background: '#000',
+      color: '#eee',
       html: `
         <div style='text-align: left'>
           <p>${description}</p>

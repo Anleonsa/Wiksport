@@ -6,7 +6,7 @@ const check_user = async ({username, password}) => {
       functionName: 'login_user',
       params: [username, password]
     });
-    return response;
+    return Boolean(response);
   }
   catch (error) {
     console.log(error);

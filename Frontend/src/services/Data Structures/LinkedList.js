@@ -51,7 +51,7 @@ class LinkedList {
   }
 
   Delete(value) {
-    if (this.Empty == true) {
+    if (this.Empty() == true) {
       return false;
     }
     if (this.head.next == null) {
@@ -72,7 +72,7 @@ class LinkedList {
   }
 
   updateValue(value, newvalue) {
-    if (this.Empty == true) {
+    if (this.Empty() == true) {
       return false;
     }
     if (this.head.next == null) {
@@ -91,7 +91,7 @@ class LinkedList {
   }
 
   popFront() {
-    if (this.Empty == true) {
+    if (this.Empty() == true) {
       return false;
     }
     if (this.head.next == null) {
@@ -108,7 +108,7 @@ class LinkedList {
   }
 
   popBack() {
-    if (this.Empty == true) {
+    if (this.Empty() == true) {
       return false;
     }
     if (this.head.next == null) {

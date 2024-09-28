@@ -25,7 +25,7 @@ export const callFunction = async({ functionName, params }) => {
       textQuery
     );
     const response = results?.[0] ?? results;
-    return Boolean(response.RESULT);
+    return response.RESULT;
   }
   catch (error) {
     console.log(error);

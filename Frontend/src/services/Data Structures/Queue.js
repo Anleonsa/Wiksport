@@ -16,6 +16,9 @@ class Queue extends LinkedList{
   Last(){
       return this.tail.value;
   }
+  Empty() {
+      return super.Empty();
+  }
 
 }
 export default Queue;

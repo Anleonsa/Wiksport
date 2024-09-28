@@ -31,14 +31,14 @@
   padding: 15px;
 }
 
-.clone_btn_container {
+.do_btn_container {
   display: flex;
   justify-content: center;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-.clone_btn {
+.do_btn {
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
@@ -46,6 +46,6 @@
   transition: background-color var(--color-transition-animation-duration);
 }
 
-.clone_btn:hover {
+.do_btn:hover {
   background-color: var(--dark-green-10);
 }

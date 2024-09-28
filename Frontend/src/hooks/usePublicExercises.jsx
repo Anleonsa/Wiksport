@@ -4,7 +4,6 @@ import { GET } from "../services/CRUD/GET"
 export const usePublicExercises = () => {
   const [publicExercises, setPublicExercises] = useState([])
 
-
   const setInfo = async () => {
     const urlResource = '/exercise/all-exercises'
     const publicExercises = await GET({

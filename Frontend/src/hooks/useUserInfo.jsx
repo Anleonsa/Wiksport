@@ -10,7 +10,6 @@ export const useUserInfo = () => {
       resource: urlResource
     })
     setUserInfo(user)
-    console.log(user)
   }
   useEffect(() => { setUserData() }, [])
   return {userInfo}

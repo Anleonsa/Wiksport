@@ -97,7 +97,7 @@ declare S_id_usuario int;
 if S_username is null then
 set S_id_usuario = Null;
 else
-set S_id_usuario= (select Id_usuario from usuario where Username=id_username);
+set S_id_usuario= (select Id_usuario from usuario where Username=S_username);
 END IF;
 select Id_rutina, Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, ejercicios_rutina(Id_rutina) as ejercicios from rutina where Id_usuario = S_id_usuario or (Id_usuario is Null and S_id_usuario is Null);
 end $$

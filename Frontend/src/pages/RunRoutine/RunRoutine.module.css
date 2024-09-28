@@ -1,0 +1,136 @@
+.main_title {
+  text-align: center;
+}
+
+.routineData {
+  padding: 10px;
+}
+
+.routineNameSubtitle {
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.routine_info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.routine_info_item {
+  display: flex;
+  align-items: center;
+  background-color: #ccc;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.routine_info_item span:nth-child(2) {
+  border-left: solid #777 2px;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+.routine_info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.routine_info_item {
+  display: flex;
+  align-items: center;
+  background-color: #ccc;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.routine_info_item span:nth-child(2) {
+  border-left: solid #777 2px;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.interface_exercise_info_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn_init_routine_container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 10px 10px 10px;
+}
+
+.btn_init_routine {
+  outline: 0;
+  border: none;
+  background-color: var(--dark-green-20);
+  color: #fff;
+  padding: 5px 20px;
+  font-size: 1.3rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--color-transition-animation-duration);
+}
+.btn_init_routine:hover {
+  background-color: var(--dark-green-10);
+}
+
+.rest_interface {
+  padding: 10px;
+}
+
+.rest_interface_subtitle {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.rest_interface_button_container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 10px 10px 10px;
+}
+
+.rest_interface_btn_continue {
+  outline: 0;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 4px;
+  background-color: var(--dark-green-20);
+  color: #fff;
+  cursor: pointer;
+}
+
+.interface_exercises {
+  padding: 10px;
+}
+
+.interface_exercise_info_img {
+  max-width: 200px;
+  max-height: 180px;
+}
+
+.interface_exercise_info_container > span {
+  font-size: 1.3rem;
+}
+
+.interface_exercise_button_container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 10px 10px 10px;
+}
+
+.interface_exercise_btn_next {
+  outline: 0;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 4px;
+  background-color: var(--dark-green-20);
+  color: #fff;
+  cursor: pointer;
+}

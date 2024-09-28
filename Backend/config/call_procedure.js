@@ -1,7 +1,8 @@
 import { getConnection } from "./db.js";
 
 const wrapIfString = (str) => {
-  if (typeof str === 'string') {
+
+  if (typeof str === 'string' && str !== 'null') {
     return ('"' + str + '"');
   }
   return str;

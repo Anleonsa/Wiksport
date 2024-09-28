@@ -1,6 +1,6 @@
 class MaxHeap {
   constructor() {
-    this.heap = [0];
+    this.heap = [{ Dificultad: 0 }];
   }
   size() {
     return this.heap.length - 1;
@@ -14,7 +14,7 @@ class MaxHeap {
     this.heap[bidx] = atemp;
   }
   siftUp(idx) {
-    while (1 < idx && this.heap[idx] > this.heap[idx >> 1]) {
+    while (1 < idx && this.heap[idx].Dificultad > this.heap[idx >> 1].Dificultad) {
       this.heapSwap(idx, idx >> 1);
       idx >>= 1;
     }
@@ -24,12 +24,13 @@ class MaxHeap {
 
     let l_child = (2 * idx <= lastIdx) ? (2 * idx) : idx;
     let r_child = (2 * idx + 1 <= lastIdx) ? (2 * idx + 1) : idx;
-    while (this.heap[l_child] > this.heap[idx] || this.heap[r_child] > this.heap[idx]) {
-      if (this.heap[l_child] > this.heap[idx] && this.heap[l_child] > this.heap[r_child]) {
+
+    while (this.heap[l_child].Dificultad > this.heap[idx].Dificultad || this.heap[r_child].Dificultad > this.heap[idx].Dificultad) {
+      if (this.heap[l_child].Dificultad > this.heap[idx].Dificultad && this.heap[l_child].Dificultad > this.heap[r_child].Dificultad) {
         this.heapSwap(l_child, idx);
         idx = l_child;
       }
-      else if (this.heap[r_child] > this.heap[idx]) {
+      else if (this.heap[r_child].Dificultad > this.heap[idx].Dificultad) {
         this.heapSwap(r_child, idx);
         idx = r_child;
       }
@@ -46,7 +47,7 @@ class MaxHeap {
     const last = this.heap.length - 1;
     this.heapSwap(1, last);
     this.heap.pop();
-    this.siftDown(1);
+    if (this.heap.length > 1) this.siftDown(1);
   }
   top() {
     if (this.heap.length <= 1) return null;

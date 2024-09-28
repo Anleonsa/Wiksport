@@ -3,18 +3,18 @@ import Footer from "../../components/App/Footer/Footer"
 import Header from "../../components/site/Header/Header"
 import Main from "../../components/App/Main/Main"
 import Sidebar from "../../components/App/Sidebar/Sidebar"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { WhoContext } from "../../Routes"
 import { useNavigate, useParams } from "react-router-dom"
 import { ROLES } from "../../data/data"
 import ExerciseCard from "../../components/App/ExerciseCard/ExerciseCard"
-import css from './PublicRoutineInfo.module.css'
+import css from './MyRoutineInfo.module.css'
 import { useRoutineInfo } from "../../hooks/useRoutineInfo"
 import ExerciseListItem from "../../components/App/ExerciseListItem/ExerciseListItem"
 import { POST } from "../../services/CRUD/POST"
 import Swal from "sweetalert2"
 
-const PublicRoutineInfo = () => {
+const MyRoutineInfo = () => {
   const { who } = useContext(WhoContext)
   const { id } = useParams()
   const { routineInfo } = useRoutineInfo({ id })
@@ -25,28 +25,6 @@ const PublicRoutineInfo = () => {
       navigate('/')
     }
   }, [who.role])
-
-  const cloneRoutine = async () => {
-    try {
-      await POST({
-        resource: '/routine/clone-routine',
-        body: {
-          id_routine: id
-        }
-      })
-      Swal.fire({
-        icon: 'success',
-        title: 'Clonación correcta'
-      })
-    }
-    catch (error) {
-      console.log(error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Ha ocurrido un error'
-      })
-    }
-  }
 
   return (
     <>
@@ -73,8 +51,8 @@ const PublicRoutineInfo = () => {
               <span>{routineInfo?.Tiempo_descanzo_serie} segundos</span>
             </div>
           </section>
-          <div className={css.clone_btn_container}>
-            <span onClick={cloneRoutine} className={css.clone_btn}>Hacer mía esta rutina</span>
+          <div className={css.do_btn_container}>
+            <span className={css.do_btn}>Hacer esta rutina</span>
           </div>
           <h2 className={css.subtitle}>Ejercicios de la rutina</h2>
           <section className={css.exercises_section}>
@@ -95,8 +73,8 @@ const PublicRoutineInfo = () => {
             ))}
           </section>
           
-          <div className={css.clone_btn_container}>
-            <span onClick={cloneRoutine} className={css.clone_btn}>Hacer mía esta rutina</span>
+          <div className={css.do_btn_container}>
+            <span className={css.do_btn}>Hacer esta rutina</span>
           </div>
         </Main>
       </ContentBox>
@@ -104,4 +82,4 @@ const PublicRoutineInfo = () => {
     </>
   )
 }
-export default PublicRoutineInfo
+export default MyRoutineInfo
