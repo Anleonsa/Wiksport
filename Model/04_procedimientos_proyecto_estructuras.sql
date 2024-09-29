@@ -30,7 +30,7 @@ drop procedure if exists login;
 delimiter $$
 create procedure login (IN N_username varchar(30))
 begin
-select Username, constrasenia from usuario where Username=N_username;
+select Username, constrasenia from Usuario where Username=N_username;
 end $$
 delimiter ;
 
@@ -41,7 +41,7 @@ delimiter $$
 # busca ejercicios
 create procedure search_ejercicios()
 begin 
-select * from ejercicio ;
+select * from Ejercicio ;
 end $$
 delimiter ;
 
@@ -52,7 +52,7 @@ delimiter $$
 # busca los datos de un ejercicio
 create procedure search_one_ejercicio(IN S_id_ejercicio int)
 begin 
-select * from ejercicio where Id_ejercicio = S_id_ejercicio;
+select * from Ejercicio where Id_ejercicio = S_id_ejercicio;
 end $$
 delimiter ;
 
@@ -79,8 +79,8 @@ BEGIN
             'Cantidad_ejercicios', Cantidad_ejercicios
         )
     ) INTO ejercicios
-    FROM rutina_ejercicio 
-    NATURAL JOIN ejercicio 
+    FROM Rutina_ejercicio 
+    NATURAL JOIN Ejercicio 
     WHERE Id_rutina = S_id_rutina order by Posicion;
 
     RETURN ejercicios;
@@ -98,9 +98,9 @@ declare S_id_usuario int;
 if S_username is null then
 set S_id_usuario = Null;
 else
-set S_id_usuario= (select Id_usuario from usuario where Username=S_username);
+set S_id_usuario= (select Id_usuario from Usuario where Username=S_username);
 END IF;
-select Id_rutina, Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, ejercicios_rutina(Id_rutina) as ejercicios from rutina where Id_usuario = S_id_usuario or (Id_usuario is Null and S_id_usuario is Null);
+select Id_rutina, Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, ejercicios_rutina(Id_rutina) as ejercicios from Rutina where Id_usuario = S_id_usuario or (Id_usuario is Null and S_id_usuario is Null);
 end $$
 delimiter ;
 
@@ -112,7 +112,7 @@ delimiter $$
 -- busca info de una sola rutina
 create procedure search_one_rutina(IN S_id_rutina int)
 begin
-select Id_rutina, Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, ejercicios_rutina(S_id_rutina) from rutina where Id_rutina=S_id_rutina;
+select Id_rutina, Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, ejercicios_rutina(S_id_rutina) from Rutina where Id_rutina=S_id_rutina;
 end $$
 delimiter ;
 
@@ -124,7 +124,7 @@ in N_tiempo_descanzo_serie smallint unsigned,
 in N_tempo_descanzo_ejercicio smallint unsigned,
 in N_id_usuario int)
 begin
-insert into rutina(Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, Id_usuario) values (N_nombre_rutina,N_nivel,
+insert into Rutina(Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, Id_usuario) values (N_nombre_rutina,N_nivel,
 N_tiempo_descanzo_serie,N_tempo_descanzo_ejercicio,N_id_usuario);
 end $$
 delimiter ;
@@ -138,7 +138,7 @@ delimiter $$
 create procedure asociar_rutina_ejercicio (in N_id_rutina int,in N_id_ejercicio int,in N_posicion smallint unsigned,in N_cantidad_series smallint unsigned,
 in N_tipo_ejecucion enum('T','R'),in N_cantidad_ejercicios smallint unsigned)
 Begin
-insert into rutina_ejercicio values (N_id_rutina,N_id_ejercicio,N_posicion,N_cantidad_series,N_tipo_ejecucion,N_cantidad_ejercicios);
+insert into Rutina_ejercicio values (N_id_rutina,N_id_ejercicio,N_posicion,N_cantidad_series,N_tipo_ejecucion,N_cantidad_ejercicios);
 End$$
 delimiter ;
 
@@ -150,7 +150,7 @@ drop procedure if exists drop_rutina;
 delimiter $$
 create procedure drop_rutina (IN E_id_rutina int)
 begin 
-delete from rutina where Id_rutina=E_id_rutina;
+delete from Rutina where Id_rutina=E_id_rutina;
 end$$
 delimiter ;
 
@@ -163,13 +163,13 @@ create procedure clonar_rutina (in S_id_rutina int, in S_username varchar(30))
 begin
 declare S_id_usuario int;
 declare N_id_rutina int;
-set S_id_usuario =(select Id_usuario from usuario where Username=S_username);
-insert into rutina(Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, Id_usuario) (select Nombre_rutina,Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio,S_id_usuario from rutina where Id_rutina=S_id_rutina); 
-set N_id_rutina = (select max(Id_rutina)from rutina);
+set S_id_usuario =(select Id_usuario from Usuario where Username=S_username);
+insert into Rutina(Nombre_rutina, Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio, Id_usuario) (select Nombre_rutina,Nivel, Tiempo_descanzo_serie, Tiempo_descanzo_ejercicio,S_id_usuario from Rutina where Id_rutina=S_id_rutina); 
+set N_id_rutina = (select max(Id_rutina)from Rutina);
 -- set N_id_rutina = LAST_INSERT_ID();
-INSERT INTO rutina_ejercicio
+INSERT INTO Rutina_ejercicio
     SELECT N_id_rutina, Id_ejercicio, Posicion, Cantidad_series, Tipo_ejecucion, Cantidad_ejercicios
-    FROM rutina_ejercicio
+    FROM Rutina_ejercicio
     WHERE Id_rutina = S_id_rutina
     ORDER BY Posicion;
 end $$
@@ -185,7 +185,7 @@ delimiter $$
 #da la info de un nombre de usuario
 create procedure info_user (in S_username varchar(30))
 begin
-select Id_usuario, Username, Imagen,Nombre, Apellido, Peso, Altura, Edad from usuario where Username=S_username;
+select Id_usuario, Username, Imagen,Nombre, Apellido, Peso, Altura, Edad from Usuario where Username=S_username;
 end $$
 delimiter ;
 
@@ -210,8 +210,8 @@ begin
 declare actual int;
 declare S_id_usuario int;
 set actual= month(curdate());
-set S_id_usuario = (select Id_usuario from usuario where Username = S_username);
-select Id_rutina, Nombre_rutina, Fecha from (select Id_rutina, Nombre_rutina from rutina where Id_usuario=S_id_usuario) as r Natural join rutina_programada where month(Fecha)=actual order by Fecha;
+set S_id_usuario = (select Id_usuario from Usuario where Username = S_username);
+select Id_rutina, Nombre_rutina, Fecha from (select Id_rutina, Nombre_rutina from rutina where Id_usuario=S_id_usuario) as r Natural join Rutina_programada where month(Fecha)=actual order by Fecha;
 end $$
 delimiter ;
 
