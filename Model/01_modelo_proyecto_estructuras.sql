@@ -1,5 +1,5 @@
-CREATE SCHEMA IF NOT EXISTS Proyecto_Estructuras;
-USE Proyecto_Estructuras;
+CREATE SCHEMA IF NOT EXISTS proyecto_estructuras;
+USE proyecto_estructuras;
 
 Drop table if exists Rutina_ejercicio;
 Drop table if exists Rutina_programada;

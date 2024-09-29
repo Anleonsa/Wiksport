@@ -1,4 +1,5 @@
 USE proyecto_estructuras;
+
 drop procedure if exists create_user;
 Delimiter $$
 # crea un usuario se le pason los datos basicos del usuario

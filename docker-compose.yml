@@ -1,0 +1,46 @@
+
+services:
+  bd:
+    image: mysql:latest
+    container_name: bd
+    environment:
+      - MYSQL_ROOT_PASSWORD=Contraseña123*
+      - MYSQL_DATABASE=proyecto_estructuras
+      - MYSQL_USER=juancito
+      - MYSQL_PASSWORD=juancitopassword
+    ports: 
+      - 3306:3306
+    volumes:
+      - ./Model/:/docker-entrypoint-initdb.d/
+    networks:
+      - my-network 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    networks:
+        - my-network 
+    ports:
+      - 5173:5173
+
+  backend:
+    build: 
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: backend
+    depends_on:  
+      - bd
+    networks:
+      - my-network
+    ports:
+      - 8080:8080
+
+networks:
+  my-network:
+    driver: bridge
