@@ -10,7 +10,7 @@ VALUES
 INSERT INTO Ejercicio (Nombre_ejercicio, Dificultad, Categoria, Descripcion, Musculo, Imagen)
 VALUES
 -- -- Fuerza:Pierna ----
-  ('Sentadilla', 7, 'Fuerza', 'Ejercicio de pierna que involucra bajar y subir flexionando las rodillas.', 'Cuádriceps, Glúteos', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.adfisioterapiavalencia.com%2Fblog%2Fsentadilla-con-barra&psig=AOvVaw0auYXkf4Wr-X0AwGSXxqLv&ust=1727650202444000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDFn67c5ogDFQAAAAAdAAAAABAK'),
+  ('Sentadilla', 7, 'Fuerza', 'Ejercicio de pierna que involucra bajar y subir flexionando las rodillas.', 'Cuádriceps, Glúteos', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbbFKk5RTCy2NRb9H-2ZRd7rE54EEMvPHhdg&s'),
   ('Zancadas', 6, 'Fuerza', 'Paso adelante flexionando ambas rodillas, cargando el peso sobre la pierna.', 'Cuádriceps, Glúteos', 'https://www.sportlife.es/uploads/s1/76/09/48/8/zancada-perfecta-perfil-correcto.jpeg'),
   ('Hip thrust', 7, 'Fuerza', 'Levantamiento de la cadera con una barra apoyada sobre las piernas, trabajando principalmente glúteos.', 'Glúteos, Isquiotibiales', 'https://cdn.shopify.com/s/files/1/1490/1130/files/glute_bridge_480x480.jpg?v=1694622200'),
   ('Prensa', 6, 'Fuerza', 'Ejercicio en máquina donde se empuja un peso con las piernas desde una posición sentada.', 'Cuádriceps, Glúteos', 'https://sdmed.cl/wp-content/uploads/2021/11/2-27-600x600.jpg'),
