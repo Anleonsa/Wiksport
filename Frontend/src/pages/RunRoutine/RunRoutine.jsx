@@ -111,19 +111,29 @@ const RunRoutine = () => {
 
   const finish = () => {
     Swal.fire({
-      title: 'Muy bien, completaste la rutina'
-    })
-    setTimeout(() => { navigate('/mis-rutinas') }, 5000) 
+      title: '¡Felicidades!, completaste la rutina',
+      color: '#eee',
+      background: '#000',
+      confirmButtonColor: "#09f",
+      confirmButtonText: 'Volver a mis rutinas',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate('/mis-rutinas')
+      } else {
+        navigate('/mis-rutinas')
+      }
+    });
   }
 
   console.log(routineInfo)
 
   const next = () => {
     if (queue.current.Empty()) finish();
-
-    const nextExercise = queue.current.First()
-    queue.current.dequeue()
-    setNowExercise(nextExercise)
+    else {
+      const nextExercise = queue.current.First()
+      queue.current.dequeue()
+      setNowExercise(nextExercise)
+    }
   }
 
   const RestInterface = ({ }) => {

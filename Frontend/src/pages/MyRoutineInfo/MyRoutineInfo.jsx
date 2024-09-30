@@ -26,6 +26,29 @@ const MyRoutineInfo = () => {
     }
   }, [who.role])
 
+  const run = () => {
+    Swal.fire({
+      title: 'Cómo quieres hacer la rutina',
+      text: 'Puedes realizar los ejercicios en el orden establecido normal, u ordenado por dificultad descendentemente',
+      icon: 'question',
+      color: '#eee',
+      background: '#000',
+      showCancelButton: true,
+      showDenyButton: true,
+      confirmButtonColor: "#09f",
+      confirmButtonText: 'Orden normal',
+      denyButtonText: 'Orden por dificultad',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate(`/hacer-rutina/normal/${id}`)
+      } else if (result.isDenied) {
+        navigate(`/hacer-rutina/order/${id}`)
+      } else if (result.isDismissed) {
+      }
+    });
+  }
+
   return (
     <>
       <Header />
@@ -74,7 +97,7 @@ const MyRoutineInfo = () => {
           </section>
           
           <div className={css.do_btn_container}>
-            <span className={css.do_btn}>Hacer esta rutina</span>
+            <span onClick={run} className={css.do_btn}>Hacer esta rutina</span>
           </div>
         </Main>
       </ContentBox>

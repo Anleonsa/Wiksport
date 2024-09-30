@@ -1,3 +1,5 @@
+import Stack from "./Stack";
+
 class Node {
   constructor({ value, height }) {
     this.val = value;
@@ -132,6 +134,33 @@ class AVL {
     }
     this.assign_height(node);
     return this.check(node);
+  }
+
+  increase(v) { // this function assume the existence of node with val === v
+    let cur = this.root;
+    while (cur.val !== v) {
+      if (v < cur.val) cur = cur.left
+      else cur = cur.right;
+    }
+    ++cur.freq;
+  }
+
+  get_freqs() {
+    let freqs = [];
+    if (this.root === null) return freqs;
+    
+    const stack = new Stack();
+    stack.push(this.root);
+
+    while (!stack.empty()) {
+      const cnode = stack.top();
+      stack.pop();
+      freqs.push({fkey: cnode.val, ffreq: cnode.freq});
+      
+      if (cnode.left !== null) stack.push(cnode.left);
+      if (cnode.right !== null) stack.push(cnode.right);
+    }
+    return freqs;
   }
 
   print_inorder() {

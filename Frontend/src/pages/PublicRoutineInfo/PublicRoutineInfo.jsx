@@ -36,7 +36,7 @@ const PublicRoutineInfo = () => {
       })
       Swal.fire({
         icon: 'success',
-        title: 'Clonación correcta'
+        title: 'Se ha agregado esta rutina a tus rutinas exitosamente'
       })
     }
     catch (error) {

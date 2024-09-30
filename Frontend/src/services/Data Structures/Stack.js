@@ -13,5 +13,8 @@ class Stack extends LinkedList {
   top(){
       return this.head.value;
   }
+  empty() {
+    return super.Empty();
+  }
 }
 export default Stack;

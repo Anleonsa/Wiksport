@@ -22,7 +22,7 @@ const PublicRoutineCard = ({ id, name, difficulty, rest_time_exercies, rest_time
       })
       Swal.fire({
         icon: 'success',
-        title: 'Clonación correcta'
+        title: 'Se ha agregado esta rutina a tus rutinas exitosamente'
       })
     }
     catch (error) {
